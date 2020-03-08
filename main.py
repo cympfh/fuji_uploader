@@ -5,6 +5,7 @@ from typing import List
 
 import tornado.ioloop
 import tornado.web
+from tornado.log import app_log
 from tornado.options import options
 
 ROOT = os.environ.get('FUJI_ROOT', "/media/cympfh/HDCZ-UT/MyPictures/x100f/")
@@ -91,5 +92,5 @@ if __name__ == "__main__":
     options.parse_command_line()
     app = make_app()
     app.listen(PORT)
-    print(f"Ready -- ROOT = {ROOT}, PORT = {PORT}")
+    app_log.info(f"Ready -- ROOT = {ROOT}, PORT = {PORT}")
     tornado.ioloop.IOLoop.current().start()
